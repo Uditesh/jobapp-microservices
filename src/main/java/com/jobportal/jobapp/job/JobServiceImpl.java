@@ -18,7 +18,7 @@ public class JobServiceImpl implements JobService{
         this.jobRepository = jobRepository;
     }
 
-    private Long nextId = 1L;
+    //private Long nextId = 1L;
 
     @Override
     public List<Job> findAllJobs() {
@@ -31,7 +31,7 @@ public class JobServiceImpl implements JobService{
     public void createJob(Job job) {
         // if we pass id in json, it will be overridden by this logic
         // auto increment by 1
-        job.setId(nextId++);
+        //job.setId(nextId++);
         jobRepository.save(job);
 
         //jobs.add(job);
@@ -102,6 +102,7 @@ public class JobServiceImpl implements JobService{
             newJob.setLocation(job.getLocation());
             newJob.setMinSalary(job.getMinSalary());
             newJob.setMaxSalary(job.getMaxSalary());
+            jobRepository.save(newJob);
             return true;
         }
         return false;
